@@ -1,69 +1,80 @@
-#******************************************************************************
-# Author:           Luke Helfinstine
-# Lab:              Lab 2
-# Date:             Jan 17, 2021
-# Description:      This calculator tells you how many boxes of diapers you
-#                   need to buy each week based on the number of children
-#                   you have and how many diapers each child uses per day.
-# Input:            Integers for number of children and number of diapers per
-#                   day.
-# Output:           A total number of boxes of 84 diapers the user needs to buy
-#                   each week.
-# Sources:          Target website for box counts.
-#******************************************************************************
-# Example output:
-# How many children do you have? 2
-# How many diapers does each child use per day? 3
-# If you buy boxes of 84, you'll need to buy 0.5 boxes of diapers a week! Holy moly!!
-#******************************************************************************
+#Import math
 
-#Declare Integer numKids
-#Declare Real numDiapers
-#Declare Constant Integer BOX_DIAPERS
+import math
 
-#Display "How many children do you have?"
-#Input numKids
+# Module main()
+#     declare constant BOX_DIAPERS = 84
+#     declare integer numKids
+#     declare float numDiapers
+#
+#     set numKids = getKids()
+#     set numDiapers = getDiapers()
+#     set totalDiapers = calcDiapers(numKids, numDiapers, * 7)
+#     set weeklyDiapers = calcWeek(totalDiapers, BOX_DIAPERS)
+#
+#     diplay "If you buy boxes of 84, you'll need to buy", XYZ,
+#       "boxes of diapers a week! Holy moly!!"
+# End module
 
-#Display "How many diapser does each child use per day?"
-#Input numDiapers
+def main():
+    BOX_DIAPERS_1 = 32
+    BOX_DIAPERS_2 = 84
+    BOX_DIAPERS_3 = 162
 
-#Set totalDiapers = numKids * numDiapers * 7 (days)
+    numKids = getKids()
+    numDiapers = getDiapers()
 
-#Set weeklyDiapers = totalDiapers / BOX_DIAPERS
+    calcDiapers(numKids, numDiapers, BOX_DIAPERS_1, BOX_DIAPERS_2, BOX_DIAPERS_3)
 
-#Display "If you buy boxes of 84,
-#         you'll need to buy X boxes of diapers a week!"
+# Module getKids()
+#     declare integer numKids
+#     Display "enter number of kids"
+#     input numKids
+#     return numKids
+# End module
 
-#End
+def getKids():
+    numKids = int(input("How many kids do you have? "))
+    return numKids
 
-#------------------------------------------------------------------------------
 
-#Declare Integer numKids
-#Declare Real numDiapers
-#Declare Constant Integer BOX_DIAPERS
-numKids = 0
-numDiapers = 0.0
-BOX_DIAPERS = 84
+# Module getDiapers()
+#     declare float numDiapers
+#     display "enter number of diapers"
+#     input numDiapers
+#     return numDiapers
+# end module
 
-#Display "How many children do you have?"
-#Input numKids
-numKids = int(input("How many children do you have? "))
+def getDiapers():
+    # Get how many diapers are used per day
+    numDiapers = float(input("How many diapers does each one use per day? "))
+    return numDiapers
 
-#Display "How many diapser does each child use per day?"
-#Input numDiapers
-numDiapers = float(input("How many diapers does each child use per day? "))
 
-#Set totalDiapers = numKids * numDiapers * 7 (days)
-totalDiapers = numKids * numDiapers * 7
+# Module calcDiapers(integer numKids, float numDiapers, constant BOX_DIAPERS_1, constant BOX_DIAPERS_2,
+#                   constant BOX_DIAPERS_3)
+#     declare integer totalDiapers
+#     set totalDiapers = numKids * numDiapers * 7
+#     return totalDiapers
+# end module
 
-#Set weeklyDiapers = totalDiapers / BOX_DIAPERS
-weeklyDiapers = totalDiapers / BOX_DIAPERS
+def calcDiapers(numKids, numDiapers, BOX_DIAPERS_1, BOX_DIAPERS_2, BOX_DIAPERS_3):
 
-#Display "If you buy boxes of 84,
-#         you'll need to buy X boxes of diapers a week!"
-print("If you buy boxes of 84, you'll need to buy", weeklyDiapers,
-      "boxes of diapers a week! Holy moly!!")
-# Ask in lecture how to round this number up to the nearest whole, real number.
+    totalDiapers = ((numKids * numDiapers) * 7)
 
-#End
-exit()
+    if totalDiapers > 162:
+        final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_3))
+        print('If you buy boxes of 162, you will need to buy', final, 'boxes of diapers a week!')
+
+    elif totalDiapers > 84:
+        final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_2))
+        print('If you buy boxes of 84, you will need to buy', final, 'boxes of diapers a week!')
+
+    elif totalDiapers > 32:
+        final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_1))
+        print('If you buy boxes of 32, you will need to buy', final, 'boxes of diapers a week!')
+
+    return totalDiapers
+
+#####
+main()
