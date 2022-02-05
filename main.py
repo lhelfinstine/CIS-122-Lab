@@ -1,3 +1,24 @@
+#******************************************************************************
+# Author:           Luke Helfinstine
+# Lab:              Lab 3
+# Description:      This calculator tells you how many boxes of diapers you
+#                   need to buy each week based on the number of children
+#                   you have and how many diapers each child uses per day.
+#                   The most recent update adds options for different box
+#                   counts; 32, 84, and 162, and rounds the total number of
+#                   boxes needed up to a whole number.
+# Input:            Integers for number of children and number of diapers per
+#                   day.
+# Output:           A total number of boxes of 84 diapers the user needs to buy
+#                   each week.
+# Sources:          Target website for box counts.
+#******************************************************************************
+# Example output:
+# How many children do you have? 2
+# How many diapers does each child use per day? 3
+# If you buy boxes of 32, you'll need to buy 2 boxes of diapers a week!
+#******************************************************************************
+
 #Import math
 
 import math
@@ -9,11 +30,11 @@ import math
 #
 #     set numKids = getKids()
 #     set numDiapers = getDiapers()
-#     set totalDiapers = calcDiapers(numKids, numDiapers, * 7)
-#     set weeklyDiapers = calcWeek(totalDiapers, BOX_DIAPERS)
 #
-#     diplay "If you buy boxes of 84, you'll need to buy", XYZ,
-#       "boxes of diapers a week! Holy moly!!"
+#     call calcDiapers(numKids, numDiapers, BOX_DIAPERS_1, BOX_DIAPERS_2, BOX_DIAPERS_3)
+#
+#     display "If you buy boxes of X, you'll need to buy", final,
+#       "boxes of diapers a week!"
 # End module
 
 def main():
