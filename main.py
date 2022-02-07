@@ -12,13 +12,20 @@
 #                   day.
 # Output:           A total number of boxes of 84 diapers the user needs to buy
 #                   each week.
-# Sources:          Target website for box counts.
+# Sources:          Target website and Walmart website for diaper box counts and
+#                   prices. NOTE: All prices based on newborn size.
 # ******************************************************************************
 # Example output:
 # How many children do you have? 2
 # How many diapers does each child use per day? 3
-# If you buy boxes of 32, you'll need to buy 2 boxes of diapers a week!
+# Do you shop at Target or Walmart? Please type:
+# If you buy boxes of 31 from Walmart, you will need to buy 2 boxes of diapers a week for
+# $9.56 per box.
 # ******************************************************************************
+# TO DO: Create function that adds the total amount due for the total number of
+#        boxes and displays the new amount.
+# ******************************************************************************
+
 
 # Import math
 
@@ -26,37 +33,33 @@ import math
 
 
 # Module main()
-#     declare constant BOX_DIAPERS = 84
-#     declare integer numKids
-#     declare float numDiapers
+#     declare constant BOX_DIAPERS_1 = 31
+#     declare constant BOX_DIAPERS_2 = 84
+#     declare constant BOX_DIAPERS_3 = 140
 #
 #     call numKids = getKids()
 #     call numDiapers = getDiapers()
+#     call whichStore = getStore()
 #
-#     call calcDiapers(numKids, numDiapers, BOX_DIAPERS_1, BOX_DIAPERS_2, BOX_DIAPERS_3)
+#     call calcDiapers(numKids, numDiapers, BOX_DIAPERS_1, BOX_DIAPERS_2, BOX_DIAPERS_3, whichStore)
 #
-#     display "If you buy boxes of X, you'll need to buy", final,
-#       "boxes of diapers a week!"
+#     display "If you buy boxes of X from Y, you'll need to buy", Z,
+#             "boxes of diapers a week for $A.BC!"
 # End module
 
 def main():
-    totalDiapers = 0
-
     BOX_DIAPERS_1 = 31
     BOX_DIAPERS_2 = 84
     BOX_DIAPERS_3 = 140
 
     numKids = getKids()
     numDiapers = getDiapers()
-    whichStore = getStore(totalDiapers)
+    whichStore = getStore()
 
-    price = getStore()
-
-    calcDiapers(numKids, numDiapers, BOX_DIAPERS_1, BOX_DIAPERS_2, BOX_DIAPERS_3, whichStore, price)
+    calcDiapers(numKids, numDiapers, BOX_DIAPERS_1, BOX_DIAPERS_2, BOX_DIAPERS_3, whichStore)
 
 
 # Module getKids()
-#     declare integer numKids
 #     Display "enter number of kids"
 #     input numKids
 #     return numKids
@@ -68,7 +71,6 @@ def getKids():
 
 
 # Module getDiapers()
-#     declare float numDiapers
 #     display "enter number of diapers"
 #     input numDiapers
 #     return numDiapers
@@ -81,86 +83,75 @@ def getDiapers():
 
 
 # Module getStore()
-# declare boolean
-# display "do you shop at Target or Walmart?"
-# input whichStore
-# set price if Walmart
-# set price if Target
-# return whichStore
+#   display "do you shop at Target or Walmart?"
+#   input whichStore
+#   return whichStore
+# end module
 
-def getStore(totalDiapers):
+def getStore():
     whichStore = str(input("Do you shop at Target or Walmart? Please type: "))
-    if whichStore == "Walmart":
-        if totalDiapers >= 140:
-            price = str("$48")
-            return price
-        if totalDiapers >= 82:
-            price = "$28"
-            return price
     return whichStore
 
 
-# WLMRT_PRICE_1 = "$9.56"
-# WLMRT_PRICE_2 = "$27.22"
-# WLMRT_PRICE_3 = "$42.94"
-#
-# TRGT_PRICE_1 = "$9.59"
-# TRGT_PRICE_2 = "$27.99"
-# TRGT_PRICE_3 = "$42.99"
-
-
-# def getPrice(whichStore, totalDiapers, price):
-#     if whichStore == 'Walmart':
-#         if totalDiapers >= 140:
-#             price = "$48"
-#         return price
-#
-#     if whichStore == "Target":
-#         if totalDiapers >= 140:
-#             price = "$42"
-#         return price
-
-
 # Module calcDiapers(integer numKids, float numDiapers, constant BOX_DIAPERS_1, constant BOX_DIAPERS_2,
-#                   constant BOX_DIAPERS_3)
-#     declare integer totalDiapers
-#
+#                   constant BOX_DIAPERS_3, string whichStore)
 #     set totalDiapers = numKids * numDiapers * 7
 #
-#     if totalDiapers > 162 Then
+#     if totalDiapers > 140 Then
 #           final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_3))
-#           print('If you buy boxes of 162, you will need to buy', final, 'boxes of diapers a week!')
+#           display 'If you buy boxes of 140 from', whichStore, 'you will need to buy', final, 'boxes
+#                    of diapers a week for $42.94')
 #
 #      elif totalDiapers > 84 Then
 #           final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_2))
-#           print('If you buy boxes of 84, you will need to buy', final, 'boxes of diapers a week!')
-#
+#           display 'If you buy boxes of 84 from', whichStore, 'you will need to buy', final, 'boxes
+#                    of diapers a week for $27.22')
 #      elif totalDiapers > 32 Then
 #           final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_1))
-#           print('If you buy boxes of 32, you will need to buy', final, 'boxes of diapers a week!')
+#           display 'If you buy boxes of 31 from', whichStore, 'you will need to buy', final, 'boxes
+#                    of diapers a week for $9.56'
 #
-#     return totalDiapers
+#  ### repeat process for Target with Target prices (use google) ###
+#
+#      return totalDiapers
+#
 # end module
 
-def calcDiapers(numKids, numDiapers, BOX_DIAPERS_1, BOX_DIAPERS_2, BOX_DIAPERS_3, whichStore, price):
+def calcDiapers(numKids, numDiapers, BOX_DIAPERS_1, BOX_DIAPERS_2, BOX_DIAPERS_3, whichStore):
     totalDiapers = ((numKids * numDiapers) * 7)
+    if whichStore == "Walmart":
+        if totalDiapers > 140:
+            final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_3))
+            print('If you buy boxes of 140 from ', whichStore, ', you will need to buy', final,
+                  'boxes of diapers a week for $42.94 per box.')
 
-    if totalDiapers > 140:
-        final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_3))
-        print('If you buy boxes of 140 from ', whichStore, ', you will need to buy', final,
-              'boxes of diapers a week for,', print(price), '.')
+        elif totalDiapers > 84:
+            final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_2))
+            print('If you buy boxes of 84, you will need to buy', final, 'boxes of diapers a week for'
+                                                                         '$27.22 per box.')
 
-    elif totalDiapers > 84:
-        final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_2))
-        print('If you buy boxes of 84, you will need to buy', final, 'boxes of diapers a week.')
+        elif totalDiapers > 31:
+            final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_1))
+            print('If you buy boxes of 31, you will need to buy', final, 'boxes of diapers a week for '
+                                                                         '$9.56 per box.')
 
-    elif totalDiapers > 31:
-        final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_1))
-        print('If you buy boxes of 31, you will need to buy', final, 'boxes of diapers a week.')
+    if whichStore == "Target":
+        if totalDiapers > 140:
+            final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_3))
+            print('If you buy boxes of 140 from ', whichStore, ', you will need to buy', final,
+                  'boxes of diapers a week for $42.99 per box.')
+
+        elif totalDiapers > 84:
+            final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_2))
+            print('If you buy boxes of 84, you will need to buy', final,
+                  'boxes of diapers a week for $27.99.')
+
+        elif totalDiapers > 31:
+            final = (math.ceil(numKids * numDiapers * 7 / BOX_DIAPERS_1))
+            print('If you buy boxes of 31, you will need to buy', final,
+                  'boxes of diapers a week for $9.59 per box.')
 
     return totalDiapers
 
-
-#####
 
 main()
